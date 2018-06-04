@@ -20,11 +20,9 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     #Handling incoming messages
     def on_message(self, message):
-        print ('Message received:  %s' % message)
-
+        print ('Message received from the clients:  %s' % message)
         #Send message back to client
         self.write_message("Current CPU usage is %s " % message)
-        # return  message
 
     # Close websocket connection
     def on_close(self):
@@ -40,7 +38,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 application = tornado.web.Application([
     (r'/webservices/cpu/', WSHandler),
-    (r'/webservices/gui/', MainHandler),
+    (r'/webservices/gui/', MainHandler ),
 
 ],**settings)
 

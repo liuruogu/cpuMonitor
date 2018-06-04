@@ -13,7 +13,7 @@ class EchoClientProtocol(WebSocketClientProtocol):
 	def onOpen(self):
 		def hello():
 		    # Send the its CPU usage data to the tornado server
-		    self.sendMessage("CPU usages from client1: "+str(psutil.cpu_percent(interval=1)))
+		    self.sendMessage("CPU usages from client2: "+str(psutil.cpu_percent(interval=1))+"%")
 		    # Send the message again in 1 second
 		    self.factory.reactor.callLater(1, hello)
 		hello()
